@@ -15,15 +15,15 @@ describe('testing auth routes', () => {
         return mongoose.connection.dropDatabase();
     });
 
-    let user = null;
-    beforeEach(async() => {
-        user = JSON.parse(JSON.stringify(await User.create({
-            userName: 'Vasily',
-            email: 'markovavasily@gmail.com',
-            phone: +15039544973,
-            password: 'hiDanny'
-        })));
-    });
+    // let user = null;
+    // beforeEach(async() => {
+    //     user = JSON.parse(JSON.stringify(await User.create({
+    //         userName: 'Vasily',
+    //         email: 'markovavasily@gmail.com',
+    //         phone: +15039544973,
+    //         password: 'hiDanny'
+    //     })));
+    // });
 
     afterAll(() => {
         return mongoose.connection.close();
@@ -32,16 +32,20 @@ describe('testing auth routes', () => {
     it('creates a user', () => {
         return request(app)
         .post('/api/v1/auth/signup')
-        .send({ user })
+        .send({ 
+            userName: 'Vasily',
+            email: 'markovavasily@gmail.com',
+            phone: +15039544973,
+            password: 'hiDanny'
+        })
         .then( res => {
             expect(res.body).toEqual({
                 _id: expect.any(String),
                 userName: 'Vasily',
                 email: 'markovavasily@gmail.com',
-                phone: +15039544973,
-                __v: 0
+                phone: +15039544973
             });
         });
     });
-    
+
 });
