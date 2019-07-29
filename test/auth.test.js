@@ -23,7 +23,7 @@ describe('testing auth routes', () => {
         return request(app)
         .post('/api/v1/auth/signup')
         .send({ 
-            username: 'Vasily',
+            fullname: 'Vasily',
             email: 'markovavasily@gmail.com',
             phone: +15039544973,
             password: 'hiDanny'
@@ -31,7 +31,7 @@ describe('testing auth routes', () => {
         .then( res => {
             expect(res.body).toEqual({
                 _id: expect.any(String),
-                username: 'Vasily',
+                fullname: 'Vasily',
                 email: 'markovavasily@gmail.com',
                 phone: +15039544973
             });
@@ -40,7 +40,7 @@ describe('testing auth routes', () => {
 
     it('signs in a user', async() => {
         const user = await User.create({
-            username: 'Danny',
+            fullname: 'Danny',
             email: 'suarezd10@gmail.com',
             phone: +15039893177,
             password: '123456'
@@ -49,13 +49,13 @@ describe('testing auth routes', () => {
         return request(app)
             .post('/api/v1/auth/signin')
             .send({
-                username: 'Danny',
+                fullname: 'Danny',
                 password: '123456',
             })
             .then(res=> {
                 expect(res.body).toEqual({
                     _id: expect.any(String),
-                    username: user.username,
+                    fullname: user.username,
                     email: 'suarezd10@gmail.com',
                     phone: +15039893177
                 })
@@ -64,7 +64,7 @@ describe('testing auth routes', () => {
 
     it('it verifus', async() => {
         await User.create({
-            username: 'Danny',
+            fullname: 'Danny',
             email: 'suarezd10@gmail.com',
             phone: +15039893177,
             password: '123456'
@@ -73,7 +73,7 @@ describe('testing auth routes', () => {
         const danny = request.agent(app);
         return danny
             .post('/api/v1/auth/signin')
-            .send({ username: 'Danny', password: '123456'})
+            .send({ fullname: 'Danny', password: '123456'})
             .then(() => {
                 return danny
                     .get('/api/v1/auth/verify');
@@ -81,7 +81,7 @@ describe('testing auth routes', () => {
             .then(res => {
                 expect(res.body).toEqual({
                     _id: expect.any(String),
-                    username: 'Danny',
+                    fullname: 'Danny',
                     email: 'suarezd10@gmail.com',
                     phone: +15039893177,
                 });
