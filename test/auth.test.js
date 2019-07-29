@@ -15,16 +15,6 @@ describe('testing auth routes', () => {
         return mongoose.connection.dropDatabase();
     });
 
-    // let user = null;
-    // beforeEach(async() => {
-    //     user = JSON.parse(JSON.stringify(await User.create({
-    //         userName: 'Vasily',
-    //         email: 'markovavasily@gmail.com',
-    //         phone: +15039544973,
-    //         password: 'hiDanny'
-    //     })));
-    // });
-
     afterAll(() => {
         return mongoose.connection.close();
     });
