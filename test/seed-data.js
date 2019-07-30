@@ -6,9 +6,9 @@ module.exports = async({ users = 10 } = { users: 10 }) => {
     [...Array(users)].map(() => ({
       fullname: chance.name(),
       email: chance.email(),
-      phone: chance.phone({ formated: false, country: 'us' }),
+      phone: chance.phone({ formatted: false, country: 'us' }),
       password: 'password',
-      location: chance.location({ fixed: 7 }),
+      location: chance.coordinates({ fixed: 7 }),
     }))
   );
 
