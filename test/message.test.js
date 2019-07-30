@@ -8,19 +8,23 @@ describe('testing auth routes', () => {
       .send({
         from: '+19712525641',
         to: '+15039893177',
-        body: ';jhd;fsuuhgliukndfliubhndrg'
+        body: 'Alchemy'
       })
-      .then(res => {
+      .then(res => {  
         console.log(res.body);
-        
-        expect(res.body).toEqual({          
-          _id: expect.any(String),
-          fullname: expect.any(String),
-          body: expect.any(String),
-          from: +19712525641,
-          to: expect.any(Number),
-          __v: 0
-        });
+              
+        expect(res.body).toEqual({
+          message: {
+            _id: expect.any(String),
+            fullname: expect.any(String),
+            body: 'Alchemy',
+            from: +19712525641,
+            to: expect.any(Number),
+            __v: 0
+          },          
+          body: expect.any(String)
+        }
+        );
       });
   });
 });
