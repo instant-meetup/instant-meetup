@@ -26,14 +26,16 @@ describe('testing auth routes', () => {
         fullname: 'Vasily',
         email: 'markovavasily@gmail.com',
         phone: +15039544973,
-        password: 'hiDanny'
+        password: 'hiDanny',
+        location: '-29.52974, 24.52815'
       })
-      .then(res => {
+      .then(res => {        
         expect(res.body).toEqual({
           _id: expect.any(String),
           fullname: 'Vasily',
           email: 'markovavasily@gmail.com',
-          phone: +15039544973
+          phone: +15039544973,
+          location: '-29.52974, 24.52815'
         });
       });
   });
@@ -43,7 +45,8 @@ describe('testing auth routes', () => {
       fullname: 'Danny',
       email: 'suarezd10@gmail.com',
       phone: +15039893177,
-      password: '123456'
+      password: '123456',
+      location: '-29.52974, 24.52815'
     });
 
     return request(app)
@@ -57,7 +60,8 @@ describe('testing auth routes', () => {
           _id: expect.any(String),
           fullname: user.fullname,
           email: 'suarezd10@gmail.com',
-          phone: +15039893177
+          phone: +15039893177,
+          location: '-29.52974, 24.52815'
         });
       });
   });
@@ -67,7 +71,8 @@ describe('testing auth routes', () => {
       fullname: 'Danny',
       email: 'suarezd10@gmail.com',
       phone: +15039893177,
-      password: '123456'
+      password: '123456',
+      location: '-29.52974, 24.52815'
     });
 
     const danny = request.agent(app);
@@ -84,6 +89,7 @@ describe('testing auth routes', () => {
           fullname: 'Danny',
           email: 'suarezd10@gmail.com',
           phone: +15039893177,
+          location: '-29.52974, 24.52815'
         });
       });
   });
