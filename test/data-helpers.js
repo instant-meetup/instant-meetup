@@ -24,8 +24,8 @@ beforeEach(async() => {
   seededUsers = prepare(users);
 
   return await agent
-    .post('api/v1/auth/signin')
-    .send({ fullname: users[0].fullname, password: users[0].password });
+    .post('/api/v1/auth/signin')
+    .send({ fullname: users[0].fullname, password: 'password' });
 });
 
 afterAll(() => {
