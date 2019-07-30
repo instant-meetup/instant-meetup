@@ -1,6 +1,5 @@
 const { getAgent } = require('../test/data-helpers');
 
-
 describe('testing auth routes', () => {
   it('can send message if auth', async() => {
     return getAgent()
@@ -10,9 +9,7 @@ describe('testing auth routes', () => {
         to: '+15039893177',
         body: 'Alchemy'
       })
-      .then(res => {  
-        console.log(res.body);
-              
+      .then(res => {                
         expect(res.body).toEqual({
           message: {
             _id: expect.any(String),
