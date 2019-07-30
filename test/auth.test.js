@@ -55,7 +55,7 @@ describe('testing auth routes', () => {
             .then(res=> {
                 expect(res.body).toEqual({
                     _id: expect.any(String),
-                    fullname: user.username,
+                    fullname: user.fullname,
                     email: 'suarezd10@gmail.com',
                     phone: +15039893177
                 })
