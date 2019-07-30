@@ -36,12 +36,11 @@ describe('testing auth routes', () => {
         return vasily
           .post('/api/v1/message/send')
           .send({
-            body: 'Test Passes',
+            body: 'Test Passes ',
             from: '+19712525641',
             to: '+15039893177'
           })
           .then(res => {
-            console.log(res.body);
             expect(res.body).toEqual({
               _id: expect.any(String),
               fullname: expect.any(String),
