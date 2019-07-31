@@ -28,4 +28,23 @@ describe('usres', () => {
         });
       });
   });
+
+  it('can update user with patch', () => {
+    const user = getUsers()[0];
+
+    return getAgent()
+      .patch(`/api/v1/user/${user._id}`)
+      .send(({ phone: 15039544973 }))
+      .then(res => {
+        console.log(res.body);
+        
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          fullname: expect.any(String),
+          email: expect.any(String),
+          phone: 15039544973,
+          location: expect.any(String),
+        });
+      });
+  });
 });
