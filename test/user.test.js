@@ -13,4 +13,19 @@ describe('usres', () => {
       });
   });
 
+  it('gets one user by id', () => {
+    const user = getUsers()[0];
+    
+    return getAgent()
+      .get(`/api/v1/user/${user._id}`)
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          fullname: expect.any(String),
+          email: expect.any(String),
+          phone: expect.any(Number),
+          location: expect.any(String),
+        });
+      });
+  });
 });
