@@ -5,8 +5,6 @@ const app = require('../lib/app');
 const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
 const User = require('../lib/models/User');
-const { getAgent } = require('../test/data-helpers');
-
 
 describe('testing auth routes', () => {
   beforeAll(() => {
@@ -96,15 +94,26 @@ describe('testing auth routes', () => {
       });
   });
 
-  // it('can sign out a user', () => {
-
-  //   return getAgent()
-  //     .get('/api/v1/signout')
-  //     .then(res => {
-  //       console.log('resssss', res);
-        
-  //       expect(res.cookie).toEqual('');
-  //     });
-  // });
-
+  it('can sign out a user', async() => {
+    await User.create({
+      fullname: 'Alex',
+      email: 'alex@gmail.com',
+      phone: +18052761296,
+      password: 'hiDanny',
+      location: '-29.52974, 24.52815'
+    });
+    const alex = request.agent(app);
+    return alex
+      .post('/api/v1/auth/signin')
+      .send({ fullname: 'Alex', password: 'hiDanny' })
+      .then(() => {
+        return alex
+          .get('/api/v1/auth/signout');
+      })
+      .then(res => {        
+        expect(res.body).toEqual({
+          message: 'See you next time!'
+        });
+      });
+  });
 });
