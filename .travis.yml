@@ -1,5 +1,9 @@
 language: node_js
 node_js: node
 services: mongodb
-env: 
- - MONGODB_URI=mongodb://localhost:27017/instant-meetup APP_SECRET=OurSecretThing
+env:
+- MONGODB_URI=mongodb://localhost:27017/instant-meetup APP_SECRET=OurSecretThing
+notifications:
+  webhooks:
+    urls:
+      secure: d17a7n/Hmd9177wpbzTw3+zECJ/E6aiNt/Ab8clHYyrwWo4P8+kLYSADr5Duof8hfz6TB0WOi7ieGcsJ5l57iSBgm1oM13hs+Mf86uWnRnfsyLPBdiwPqfnqNEHDpv3kHZFf1p74Gcodoe0FhZUugFRuy3hz2wW1nswiqXyXqdDzW5geSuySahDs/7SRyv3PFbesA5h8wcogV8/L3KgR/LGl8nKxEUMg6LN7El2VJrg0MzWsBF/cOe0503ib8M+uJtJANga1s4FFSdt8P0YIX5kl8QoNhJM1ixKXpFR5UGduohKKZlvRMK3/5SMrQqinbwGuud3KvDdbbkSdK1e6ik6+ALBCEX7G9HDccHwEv1yG/HvRWFVYM37YDGKZzXp6it1zZGhLbcUuhTpFJ9mkjak4GSkwygl1KDhGIenDHOJtr5vdHrZjWCBm1Q7kpPtFNKYRxa4uLeSZ2ZGp1cSDQrhXWmVttxUdvVRq3NEpZcZ2+R05OhNfGJWDhRGEeIQNUZ2d0Zn/oZXFqET8uemT2wp1Sjx3LLL8OQNobWc+ycuZad/Vk2Ne0pI0FVfBltm3YSTIdj2l7BI6ml1yva0eE+l4A/KirCZlAEaQKcmJP9dqp9YyiKqdNnBVxzJgk0DyQhO+6UqGDuTAScLVd0EeNfenleI9IXF8TVUYOkgfpUM=
