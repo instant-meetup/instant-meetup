@@ -35,9 +35,7 @@ describe('usres', () => {
     return getAgent()
       .patch(`/api/v1/user/${user._id}`)
       .send(({ phone: 15039544973 }))
-      .then(res => {
-        console.log(res.body);
-        
+      .then(res => {        
         expect(res.body).toEqual({
           _id: expect.any(String),
           fullname: expect.any(String),
