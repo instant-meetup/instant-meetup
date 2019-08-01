@@ -11,17 +11,8 @@ describe('testing auth routes', () => {
       })
       .then(res => {                
         expect(res.body).toEqual({
-          message: {
-            _id: expect.any(String),
-            fullname: expect.any(String),
-            body: 'Alchemy',
-            from: +19712525641,
-            to: expect.any(Number),
-            __v: 0
-          },          
           body: expect.any(String)
-        }
-        );
+        });
       });
   });
 
@@ -31,44 +22,13 @@ describe('testing auth routes', () => {
       .post ('/api/v1/message/sendall')
       .send({
         from: '+19712525641',
-        to:     ,
+        to: allUsers,
         body: 'Alchemy'
       })
-      .then(res => {               
-        expect(res.body).toEqual([{
-          message: {
-            _id: expect.any(String),
-            fullname: expect.any(String),
-            body: 'Alchemy',
-            from: +19712525641,
-            to: expect.any(Number),
-            __v: 0
-          },          
+      .then(res => {
+        expect(res.body).toEqual({  
           body: expect.any(String)
-        },
-        {
-          message: {
-            _id: expect.any(String),
-            fullname: expect.any(String),
-            body: 'Alchemy',
-            from: +19712525641,
-            to: expect.any(Number),
-            __v: 0
-          },          
-          body: expect.any(String)
-        },
-        {
-          message: {
-            _id: expect.any(String),
-            fullname: expect.any(String),
-            body: 'Alchemy',
-            from: +19712525641,
-            to: expect.any(Number),
-            __v: 0
-          },          
-          body: expect.any(String)
-        }]
-        );
+        });
       });
   });
 });

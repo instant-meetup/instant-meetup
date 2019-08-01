@@ -5,6 +5,8 @@ const app = require('../lib/app');
 const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
 const User = require('../lib/models/User');
+const { getAgent } = require('../test/data-helpers');
+
 
 describe('testing auth routes', () => {
   beforeAll(() => {
@@ -93,5 +95,16 @@ describe('testing auth routes', () => {
         });
       });
   });
+
+  // it('can sign out a user', () => {
+
+  //   return getAgent()
+  //     .get('/api/v1/signout')
+  //     .then(res => {
+  //       console.log('resssss', res);
+        
+  //       expect(res.cookie).toEqual('');
+  //     });
+  // });
 
 });
