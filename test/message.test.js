@@ -12,7 +12,8 @@ describe('testing message routes', () => {
       })
       .then(res => {                
         expect(res.body).toEqual({
-          body: expect.any(String)
+          body: expect.any(String),
+          message: expect.any(Object)
         });
       });
   });
@@ -33,7 +34,7 @@ describe('testing message routes', () => {
       });
   });
 
-  it('gets one message by id', async() => {
+  it('gets one message by ID', async() => {
      const message = JSON.parse(JSON.stringify(
        await Message
        .create({
@@ -53,4 +54,20 @@ describe('testing message routes', () => {
           });
         });
   });
+
+  // it('can send a reply', () => {
+  
+  //   // return getAgent()
+  //   Message
+  //     .post('/api/v1/reply')
+  //     .create({ coming: ['$$$'], body: 'this is body' })
+  //     .send({ coming: '5d437f6b9163752dec38e168' })
+  //     .then(res => {
+  //       expect(res.body).toEqual({
+  //         coming: expect.any(Array),
+  //         body: expect.any(String)
+  //       })
+  //     })
+  // })
+ 
 });
