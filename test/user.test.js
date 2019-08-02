@@ -21,7 +21,7 @@ describe('usres', () => {
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          fullname: expect.any(String),
+          username: expect.any(String),
           email: expect.any(String),
           phone: expect.any(Number),
           location: expect.any(String),
@@ -38,7 +38,7 @@ describe('usres', () => {
       .then(res => {        
         expect(res.body).toEqual({
           _id: expect.any(String),
-          fullname: expect.any(String),
+          username: expect.any(String),
           email: expect.any(String),
           phone: 15039544973,
           location: expect.any(String),
