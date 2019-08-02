@@ -42,9 +42,7 @@ describe('testing auth routes', () => {
     ));
     return getAgent()
       .get(`/api/v1/message/${message._id}`)
-      .then(res => {
-        console.log(res.body);
-        
+      .then(res => {        
         expect(res.body).toEqual({
           _id: expect.any(String),
           body: 'this is a message from us',
