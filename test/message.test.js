@@ -1,4 +1,5 @@
 const { getAgent } = require('../test/data-helpers');
+const Message = require('../lib/models/Message');
 
 describe('testing auth routes', () => {
   it('can send message if auth', () => {
@@ -28,6 +29,26 @@ describe('testing auth routes', () => {
       .then(res => {
         expect(res.body).toEqual({  
           body: expect.any(String)
+        });
+      });
+  });
+
+  it('gets one message by ID', async() => {
+    const message = JSON.parse(JSON.stringify(
+      await Message
+        .create({
+          body: 'this is a message from us',
+        })
+    ));
+    return getAgent()
+      .get(`/api/v1/message/${message._id}`)
+      .then(res => {
+        expect(res.body).toEqual({
+          _id: expect.any(String),
+          body:  'this is a message from us',
+          coming:  expect.any(Array),
+          to:  expect.any(Array),
+          __v: 0
         });
       });
   });
