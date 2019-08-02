@@ -4,7 +4,7 @@ const chance = require('chance').Chance();
 module.exports = async({ users = 10 } = { users: 10 }) => {
   const createdUsers = await User.create(
     [...Array(users)].map(() => ({
-      fullname: chance.name(),
+      username: chance.name(),
       email: chance.email(),
       phone: chance.phone({ formatted: false, country: 'us' }),
       password: 'password',

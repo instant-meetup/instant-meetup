@@ -23,7 +23,7 @@ describe('testing auth routes', () => {
     return request(app)
       .post('/api/v1/auth/signup')
       .send({ 
-        fullname: 'Vasily',
+        username: 'Vasily',
         email: 'markovavasily@gmail.com',
         phone: +15039544973,
         password: 'hiDanny',
@@ -32,7 +32,7 @@ describe('testing auth routes', () => {
       .then(res => {        
         expect(res.body).toEqual({
           _id: expect.any(String),
-          fullname: 'Vasily',
+          username: 'Vasily',
           email: 'markovavasily@gmail.com',
           phone: +15039544973,
           location: '-29.52974, 24.52815'
@@ -42,7 +42,7 @@ describe('testing auth routes', () => {
 
   it('signs in a user', async() => {
     const user = await User.create({
-      fullname: 'Danny',
+      username: 'Danny',
       email: 'suarezd10@gmail.com',
       phone: +15039893177,
       password: '123456',
@@ -52,13 +52,13 @@ describe('testing auth routes', () => {
     return request(app)
       .post('/api/v1/auth/signin')
       .send({
-        fullname: 'Danny',
+        username: 'Danny',
         password: '123456',
       })
       .then(res=> {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          fullname: user.fullname,
+          username: user.username,
           email: 'suarezd10@gmail.com',
           phone: +15039893177,
           location: '-29.52974, 24.52815'
@@ -68,7 +68,7 @@ describe('testing auth routes', () => {
 
   it('it verifies', async() => {
     await User.create({
-      fullname: 'Danny',
+      username: 'Danny',
       email: 'suarezd10@gmail.com',
       phone: +15039893177,
       password: '123456',
@@ -78,7 +78,7 @@ describe('testing auth routes', () => {
     const danny = request.agent(app);
     return danny
       .post('/api/v1/auth/signin')
-      .send({ fullname: 'Danny', password: '123456' })
+      .send({ username: 'Danny', password: '123456' })
       .then(() => {
         return danny
           .get('/api/v1/auth/verify');
@@ -86,7 +86,7 @@ describe('testing auth routes', () => {
       .then(res => {
         expect(res.body).toEqual({
           _id: expect.any(String),
-          fullname: 'Danny',
+          username: 'Danny',
           email: 'suarezd10@gmail.com',
           phone: +15039893177,
           location: '-29.52974, 24.52815'
@@ -96,7 +96,7 @@ describe('testing auth routes', () => {
 
   it('can sign out a user', async() => {
     await User.create({
-      fullname: 'Alex',
+      username: 'Alex',
       email: 'alex@gmail.com',
       phone: +18052761296,
       password: 'hiDanny',
@@ -105,7 +105,7 @@ describe('testing auth routes', () => {
     const alex = request.agent(app);
     return alex
       .post('/api/v1/auth/signin')
-      .send({ fullname: 'Alex', password: 'hiDanny' })
+      .send({ username: 'Alex', password: 'hiDanny' })
       .then(() => {
         return alex
           .get('/api/v1/auth/signout');
