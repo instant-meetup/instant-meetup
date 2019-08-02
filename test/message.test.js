@@ -43,11 +43,12 @@ describe('testing auth routes', () => {
     return getAgent()
       .get(`/api/v1/message/${message._id}`)
       .then(res => {
+        console.log(res.body);
+        
         expect(res.body).toEqual({
           _id: expect.any(String),
-          body:  'this is a message from us',
-          coming:  expect.any(Array),
-          to:  expect.any(Array),
+          body: 'this is a message from us',
+          to: expect.any(Array),
           __v: 0
         });
       });
