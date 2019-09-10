@@ -7,7 +7,7 @@ describe('usres', () => {
     return getAgent()
       .get('/api/v1/user')
       .then(res => {
-        users.forEach(user => {
+        users.forEach(() => {
           expect(res.body).toHaveLength(10);
         });
       });
